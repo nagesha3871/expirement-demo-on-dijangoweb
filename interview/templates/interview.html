@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Interview</title>
+</head>
+<body>
+    <h1>Interview Practice</h1>
+
+    <form method="get">
+        <label>Select Skill:</label>
+        <select name="skill">
+            <option value="">--Choose--</option>
+            <option value="python">Python</option>
+            <option value="web">Web</option>
+        </select>
+        <button type="submit">Start Interview</button>
+    </form>
+
+    {% if questions %}
+        <hr>
+        <form method="post">
+            {% csrf_token %}
+            <input type="hidden" name="skill" value="{{ skill }}">
+
+            {% for q in questions %}
+                <p><strong>{{ q }}</strong></p>
+                <textarea name="q{{ forloop.counter0 }}" rows="3" cols="60"></textarea>
+                <br><br>
+            {% endfor %}
+
+            <button type="submit">Submit Answers</button>
+        </form>
+    {% endif %}
+</body>
+</html>

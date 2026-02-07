@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Result</title>
+</head>
+<body>
+    <h1>Interview Result</h1>
+
+    <p><strong>Skill:</strong> {{ skill|upper }}</p>
+    <p><strong>Score:</strong> {{ score }} / {{ total }}</p>
+    <p><strong>Status:</strong> {{ status }}</p>
+
+    <hr>
+
+    {% for item in results %}
+        <p><strong>{{ item.question }}</strong></p>
+        <p>Your answer: {{ item.answer }}</p>
+
+        {% if item.good %}
+            <p style="color: green;">Good answer</p>
+        {% else %}
+            <p style="color: red;">Needs improvement</p>
+        {% endif %}
+        <hr>
+    {% endfor %}
+</body>
+</html>
